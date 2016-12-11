@@ -3,6 +3,7 @@ import os
 import re
 import sys
 import shutil
+import getopt
 from urllib.request import urlopen, urlretrieve
 from urllib.parse import quote_plus
 
@@ -10,11 +11,10 @@ ROOT_DIR = os.path.realpath(os.path.dirname(__file__))
 INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s(?:\[([A-Z]{3})\])?\s?([\w\-\s]*?)(?:/+[\w\s]*)?$"
 ONLINE_REGEX = "(http://magiccards\.info/scans/en/\w{3}/\d{1,3}\w?\.jpg)"
 
-# TODO: use getopts
 output_dir = os.path.join(ROOT_DIR, "Proxy")
-scans_dir = os.path.join(ROOT_DIR, "ref")
 not_found_file = os.path.join(ROOT_DIR, "not_found.txt")
-input_file = os.path.join(ROOT_DIR, 'Proxy.txt')
+input_file = os.path.join(ROOT_DIR, "Proxy.txt")
+scans_dir = ''
 online_mode = True
 
 # TODO: support special-encoded character, like 'æ'
@@ -49,8 +49,15 @@ def card_not_found(name):
 def init():
     if not os.path.isfile(input_file):
         sys.exit("Provided input file is not valid")
-    if online_mode is False and not os.path.isdir(scans_dir):
-        sys.exit("Offline mode requires valid scans folder")
+    if online_mode is False:
+        if not scans_dir:
+            print("Ref option is mandatory in offline mode")
+            usage()
+            sys.exit(1)
+        elif not os.path.isdir(scans_dir):
+            sys.exit("Offline mode requires valid scans folder")
+
+    # All is OK !
     if os.path.isdir(output_dir):
         # Delete previous work and init current one
         for filename in os.listdir(output_dir):
@@ -60,7 +67,47 @@ def init():
         os.makedirs(output_dir)
 
 
+# TODO: usage function
+def usage():
+    print("Usage: {} [-h] [-m (online|offline)] [-r scansDir] [inputFile [outputDir]]"
+          .format(os.path.basename(sys.argv[0])))
+
+
+def process_opts():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hi:o:m:r:", ["help", "input=", "output=", "mode=", "ref="])
+    except getopt.GetoptError as err:
+        print(err)
+        usage()
+        sys.exit(2)
+    global input_file
+    global output_dir
+    global online_mode
+    global scans_dir
+    for o, v in opts:
+        if o in ("-h", "--help"):
+            usage()
+            sys.exit(0)
+        elif o in ("-i", "--input"):
+            input_file = v
+        elif o in ("-o", "--output"):
+            output_dir = v
+        elif o in ("-m", "--mode"):
+            if v == "online":
+                online_mode = True
+            elif v == "offline":
+                online_mode = False
+            else:
+                usage()
+                sys.exit(2)
+        elif o in ("-r", "--ref"):
+            scans_dir = v
+        else:
+            assert False, "unhandled option"
+
+
 if __name__ == '__main__':
+    process_opts()
     init()
     placeholderid = 0
     # Process input file
