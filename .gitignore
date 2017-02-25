@@ -3,3 +3,4 @@ scans/*
 conf/global.ini
 output/Proxy
 input/not_found.txt
+output/Proxy.sla
