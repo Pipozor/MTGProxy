@@ -1,0 +1,182 @@
+19930805	LEA	Limited Edition Alpha
+19931000	LEB	Limited Edition Beta
+19931200	2ED	Unlimited Edition
+19931200	ARN	Arabian Nights
+19940300	ATQ	Antiquities
+19940400	3ED	Revised Edition
+19940600	LEG	Legends
+19940800	DRK	The Dark
+19941100	FEM	Fallen Empires
+19950400	4ED	Fourth Edition
+19950600	ICE	Ice Age
+19950700	CHR	Chronicles
+19950800	none	Renaissance (French/German)
+19950800	none	Rinascimento (Italian)
+19951000	HML	Homelands
+19960610	ALL	Alliances
+19960700	none	Rivals Quick Start Set
+19961007	MIR	Mirage
+19961100	none	Multiverse Gift Box
+19970203	VIS	Visions
+19970324	5ED	Fifth Edition
+19970600	POR	Portal
+19970609	WTH	Weatherlight
+19971013	TMP	Tempest
+19980302	STH	Stronghold
+19980600	PO2	Portal Second Age
+19980615	EXO	Exodus
+19980817	UGL	Unglued
+19981012	USG	Urza's Saga
+19981100	ATH	Anthologies
+19990215	ULG	Urza's Legacy
+19990428	6ED	Classic Sixth Edition
+19990500	PTK	Portal Three Kingdoms
+19990607	UDS	Urza's Destiny
+19990700	S99	Starter 1999
+19991004	MMQ	Mercadian Masques
+19991112	BRB	Battle Royale Box Set
+20000214	NEM	Nemesis
+20000605	PCY	Prophecy
+20000700	S00	Starter 2000
+20001002	INV	Invasion
+20001200	BTD	Beatdown Box Set
+20010205	PLS	Planeshift
+20010411	7ED	Seventh Edition
+20010604	APC	Apocalypse
+20011001	ODY	Odyssey
+20011200	DKM	Deckmasters: Garfield vs. Finkel
+20020204	TOR	Torment
+20020527	JUD	Judgment
+20021007	ONS	Onslaught
+20030203	LGN	Legions
+20030526	SCG	Scourge
+20030728	8ED	Eighth Edition
+20031003	MRD	Mirrodin
+20040206	DST	Darksteel
+20040604	5DN	Fifth Dawn
+20041001	CHK	Champions of Kamigawa
+20041119	UNH	Unhinged
+20050204	BOK	Betrayers of Kamigawa
+20050603	SOK	Saviors of Kamigawa
+20050729	9ED	Ninth Edition
+20051007	RAV	Ravnica: City of Guilds
+20060203	GPT	Guildpact
+20060505	DIS	Dissension
+20060721	CSP	Coldsnap
+20061006	TSP/TSB	Time Spiral
+20070202	PLC	Planar Chaos
+20070504	FUT	Future Sight
+20070713	10E	Tenth Edition
+20071012	LRW	Lorwyn
+20071116	EVG	Duel Decks: Elves vs. Goblins
+20080201	MOR	Morningtide
+20080502	SHM	Shadowmoor
+20080725	EVE	Eventide
+20080829	DRB	From the Vault: Dragons
+20081003	ALA	Shards of Alara
+20081107	DD2	Duel Decks: Jace vs. Chandra
+20090206	CON	Conflux
+20090410	DDC	Duel Decks: Divine vs. Demonic
+20090430	ARB	Alara Reborn
+20090717	M10	Magic 2010
+20090828	V09	From the Vault: Exiled
+20090904	HOP	Planechase
+20091002	ZEN	Zendikar
+20091030	DDD	Duel Decks: Garruk vs. Liliana
+20091120	H09	Premium Deck Series: Slivers
+20100108	none	Premium Foil Booster
+20100205	WWK	Worldwake
+20100319	DDE	Duel Decks: Phyrexia vs. the Coalition
+20100423	ROE	Rise of the Eldrazi
+20100521	N/A	Deck Builder's Toolkit
+20100604	DPA	Duels of the Planeswalkers (decks)
+20100618	ARC	Archenemy
+20100716	M11	Magic 2011
+20100827	V10	From the Vault: Relics
+20100903	DDF	Duel Decks: Elspeth vs. Tezzeret
+20101001	SOM	Scars of Mirrodin
+20101119	PD2	Premium Deck Series: Fire and Lightning
+20110204	MBS	Mirrodin Besieged
+20110311	N/A	Deck Builder's Toolkit (Refreshed Version)
+20110401	DDG	Duel Decks: Knights vs. Dragons
+20110513	NPH	New Phyrexia
+20110617	CMD	Commander
+20110715	M12	Magic 2012
+20110826	V11	From the Vault: Legends
+20110902	DDH	Duel Decks: Ajani vs. Nicol Bolas
+20110930	ISD	Innistrad
+20111118	PD3	Premium Deck Series: Graveborn
+20120203	DKA	Dark Ascension
+20120330	DDI	Duel Decks: Venser vs. Koth
+20120504	AVR	Avacyn Restored
+20120601	PC2	Planechase 2012 Edition
+20120713	M13	Magic 2013
+20120713	N/A	Deck Builder's Toolkit (2012 Edition)
+20120831	V12	From the Vault: Realms
+20120907	DDJ	Duel Decks: Izzet vs. Golgari
+20121005	RTR	Return to Ravnica
+20121102	CM1	Commander's Arsenal
+20121116	none	2012 Holiday Gift Box
+20130201	GTC	Gatecrash
+20130315	DDK	Duel Decks: Sorin vs. Tibalt
+20130503	DGM	Dragon's Maze
+20130607	MMA	Modern Masters
+20130719	M14	Magic 2014 Core Set
+20130719	N/A	Deck Builder's Toolkit (2014 Core Set Edition)
+20130823	V13	From the Vault: Twenty
+20130906	DDL	Duel Decks: Heroes vs. Monsters
+20130927	THS	Theros
+20131101	C13	Commander 2013 Edition
+20131115	none	2013 Holiday Gift Box
+20140207	BNG	Born of the Gods
+20140314	DDM	Duel Decks: Jace vs. Vraska
+20140502	JOU	Journey into Nyx
+20140530	MD1	Modern Event Deck 2014
+20140606	CNS	Conspiracy
+20140718	M15	Magic 2015 Core Set
+20140718	N/A	Deck Builder's Toolkit (2015 Core Set Edition)
+20140822	V14	From the Vault: Annihilation
+20140905	DDN	Duel Decks: Speed vs. Cunning
+20140926	KTK	Khans of Tarkir
+20141107	C14	Commander 2014
+20141114	none	2014 Holiday Gift Box
+20141205	DD3	Duel Decks Anthology
+20150123	FRF	Fate Reforged
+20150227	DDO	Duel Decks: Elspeth vs. Kiora
+20150327	DTK	Dragons of Tarkir
+20150506	TPR	Tempest Remastered
+20150522	MM2	Modern Masters (2015 Edition)
+20150617	N/A	Deck Builder's Toolkit (Magic Origins Edition)
+20150717	ORI	Magic Origins
+20150821	V15	From the Vault: Angels
+20150828	DDP	Duel Decks: Zendikar vs. Eldrazi
+20151002	BFZ	Battle for Zendikar
+20151106	N/A	2015 Holiday Gift Box
+20151113	C15	Commander 2015
+20160122	OGW	Oath of the Gatewatch
+20160226	DDQ	Duel Decks: Blessed vs. Cursed
+20160408	SOI	Shadows over Innistrad
+20160408	N/A	Deck Builder's Toolkit (Shadows over Innistrad Edition)
+20160513	N/A	Shadows over Innistrad: The Gift Box
+20160610	EMA	Eternal Masters
+20160622	EMN	Eldritch Moon
+20160819	V16	From the Vault: Lore
+20160902	DDR	Duel Decks: Nissa vs. Ob Nixilis
+20160930	KLD	Kaladesh
+20161111	C16	Commander 2016
+20161125	PCA	Planechase Anthology
+20170120	AER	Aether Revolt
+20170317	MM3	Modern Masters 2017 Edition
+20170428	AKH	Amonkhet
+20170519	DDS	Duel Decks: Mind vs. Might
+20170609	CMA	Commander Anthology
+20170614	HOU	Hour of Devastation
+20170616	unrevealed	Archenemy: Nicol Bolas
+20171000	unrevealed	"Ham"
+20180200	unrevealed	"Eggs"
+20180400	unrevealed	"Soup"
+20180600	unrevealed	"Salad"
+20181000	unrevealed	"Spaghetti"
+20190200	unrevealed	"Meatballs"
+20190400	unrevealed	"Milk"
+20190600	unrevealed	"Cookies"
