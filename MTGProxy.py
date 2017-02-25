@@ -7,7 +7,7 @@ from urllib.request import urlopen, urlretrieve
 from urllib.parse import quote_plus
 import configparser
 
-ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__)))
 INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s+(?:\[(.{2}.?)\])?\s?([\w\,\'\-\s]*?)(?:/+[\w\,\'\-\s]*)?$"
 ONLINE_REGEX = "(http://magiccards\.info/scans/en/\w{2,3}/\d{1,3}\w?\.jpg)"
 
@@ -73,7 +73,6 @@ def init():
             sys.exit(1)
         elif not os.path.isdir(scans_dir):
             sys.exit("Offline mode requires valid scans folder")
-    print("output_dir is : " + output_dir)
     # All is OK !
     if os.path.isdir(output_dir):
         # Delete previous work and init current one
@@ -158,8 +157,7 @@ if __name__ == '__main__':
                     # urlretrieve(searchurl, cardname+".txt")
                     if re.search(ONLINE_REGEX, str(httpcontent)):
                         imageurl = re.findall(ONLINE_REGEX, str(httpcontent))[0]
-                        print(imageurl)
-                        print("Create {} {}".format(quantity, os.path.basename(cardname)))
+                        print("Create {} {} using : {}".format(quantity, os.path.basename(cardname), imageurl))
                         tmpfile = urlretrieve(imageurl)[0]
                         for i in range(0, int(quantity)):
                             placeholderid += 1
