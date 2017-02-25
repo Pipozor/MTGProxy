@@ -3,17 +3,18 @@ import os
 import re
 import sys
 import shutil
-import getopt
 from urllib.request import urlopen, urlretrieve
 from urllib.parse import quote_plus
+import configparser
 
-ROOT_DIR = os.path.realpath(os.path.dirname(__file__))
-INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s(?:\[([A-Z]{3})\])?\s?([\w\-\s]*?)(?:/+[\w\s]*)?$"
-ONLINE_REGEX = "(http://magiccards\.info/scans/en/\w{3}/\d{1,3}\w?\.jpg)"
+ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s+(?:\[(.{2}.?)\])?\s?([\w\,\'\-\s]*?)(?:/+[\w\,\'\-\s]*)?$"
+ONLINE_REGEX = "(http://magiccards\.info/scans/en/\w{2,3}/\d{1,3}\w?\.jpg)"
 
-output_dir = os.path.join(ROOT_DIR, "Proxy")
-not_found_file = os.path.join(ROOT_DIR, "not_found.txt")
-input_file = os.path.join(ROOT_DIR, "Proxy.txt")
+output_dir = os.path.join(ROOT_DIR, "output", "Proxy")
+not_found_file = os.path.join(ROOT_DIR, "input", "not_found.txt")
+input_file = os.path.join(ROOT_DIR, "input", "Proxy.txt")
+edition_file = os.path.join(ROOT_DIR, "conf", "Edition.txt")
 scans_dir = ''
 online_mode = True
 
@@ -28,14 +29,29 @@ online_mode = True
 # TODO: generate PDF files
 
 
-def findcard(loc, name):
+def findcard(loc, name, searchdir=None):
     regex = name.lower()
+    found = ''
     # print("regex : '{}' ".format(regex))
-    for root, dirs, files in os.walk(loc):
-        for file in files:
-            if re.match(regex, file, re.IGNORECASE) and os.path.getsize(os.path.join(root, file)) > 0:
-                # print(os.path.getsize(os.path.join(root, file)))
-                return os.path.join(root, file)
+    with open(edition_file, 'r', encoding='utf8') as filedesc:
+        edition_lines = reversed(filedesc.readlines())
+    for edition_line in edition_lines:
+        # print(edition_line)
+        if re.match("\d{8}\t(.{3})\t", edition_line):
+            trigram = re.findall("\d{8}\t(.{3})\t", edition_line)[0]
+            # print(trigram)
+            edition_scan_path = os.path.join(loc, trigram)
+            # print(edition_scan_path + " test")
+            if os.path.exists(edition_scan_path):
+                for filename in os.listdir(edition_scan_path):
+                    edition_file_path = os.path.join(edition_scan_path, filename)
+                    if re.match(regex, filename, re.IGNORECASE) and os.path.getsize(edition_file_path) > 0:
+                        print(edition_file_path)
+                        found = edition_file_path
+                        if not searchdir or os.path.basename(edition_scan_path) == searchdir:
+                            return found
+    if found:
+        return found
 
 
 def card_not_found(name):
@@ -43,7 +59,8 @@ def card_not_found(name):
     if not os.path.isfile(not_found_file):
         mode = 'w'
     with open(not_found_file, mode) as nfd:
-        nfd.write(name + '\n')
+        nfd.write(name)
+        # nfd.write(name + '\n')
 
 
 def init():
@@ -56,7 +73,7 @@ def init():
             sys.exit(1)
         elif not os.path.isdir(scans_dir):
             sys.exit("Offline mode requires valid scans folder")
-
+    print("output_dir is : " + output_dir)
     # All is OK !
     if os.path.isdir(output_dir):
         # Delete previous work and init current one
@@ -65,6 +82,7 @@ def init():
     else:
         # Create output dir if necessary
         os.makedirs(output_dir)
+    open(not_found_file, 'w').close()
 
 
 # TODO: usage function
@@ -73,41 +91,37 @@ def usage():
           .format(os.path.basename(sys.argv[0])))
 
 
-def process_opts():
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "hi:o:m:r:", ["help", "input=", "output=", "mode=", "ref="])
-    except getopt.GetoptError as err:
-        print(err)
-        usage()
-        sys.exit(2)
+def process_param():
+    config = configparser.ConfigParser()
+    config.read(os.path.join(ROOT_DIR, 'conf', 'global.ini'))
     global input_file
     global output_dir
     global online_mode
     global scans_dir
-    for o, v in opts:
-        if o in ("-h", "--help"):
-            usage()
-            sys.exit(0)
-        elif o in ("-i", "--input"):
-            input_file = v
-        elif o in ("-o", "--output"):
-            output_dir = v
-        elif o in ("-m", "--mode"):
-            if v == "online":
-                online_mode = True
-            elif v == "offline":
-                online_mode = False
-            else:
-                usage()
-                sys.exit(2)
-        elif o in ("-r", "--ref"):
-            scans_dir = v
-        else:
-            assert False, "unhandled option"
+
+    input_file = config.get('input', 'proxy_list')
+    if not os.path.isabs(input_file):
+        input_file = os.path.realpath(os.path.join(ROOT_DIR, input_file))
+
+    output_path = config.get('output', 'output_path')
+    output_dir = output_path
+    if not os.path.isabs(output_dir):
+        output_dir = os.path.realpath(os.path.join(ROOT_DIR, output_dir, 'Proxy'))
+    # config.getboolean('mode', 'online_mode')
+    if config.get('mode', 'mode') == "online":
+        online_mode = True
+    elif config.get('mode', 'mode') == "offline":
+        online_mode = False
+
+    scans_dir = config.get('input', 'scans_directory')
+    if not os.path.isabs(scans_dir):
+        scans_dir = os.path.realpath(os.path.join(ROOT_DIR, scans_dir))
 
 
 if __name__ == '__main__':
-    process_opts()
+    # process_opts()
+    process_param()
+
     init()
     placeholderid = 0
     # Process input file
@@ -119,23 +133,24 @@ if __name__ == '__main__':
                 # print("cardset : " + cardset)
                 if online_mode is False:
                     location = scans_dir
-                    if cardset != '':
-                        location = os.path.join(scans_dir, cardset)
-                    filepath = findcard(location, cardname)
+                    filepath = findcard(location, cardname, searchdir=cardset)
+                    # print(filepath)
                     if filepath is not None:
                         print("Create {} {}".format(quantity, os.path.basename(filepath)))
                         for i in range(0, int(quantity)):
                             placeholderid += 1
                             shutil.copy(filepath, os.path.join(output_dir, str(placeholderid) + ".jpg"))
                     else:
-                        card_not_found(cardname)
+                        print("Not found : {}".format(cardname))
+                        card_not_found(line)
                 elif online_mode is True:
                     searchurl = ''
                     if cardset == '':
-                        searchurl = "http://magiccards.info/query?q={}&v=card&s=cname".format(
+                        searchurl = "http://magiccards.info/query?q=!{}&v=card&s=cname".format(
                             quote_plus(cardname.lower()))
                     else:
-                        searchurl = "http://magiccards.info/query?q={}+e%3A{}%2Fen&v=card&s=cname".format(
+                        searchurl = "http://magiccards.info/query?q=!{}+e%3A{}&v=card&s=cname".format(
+                            # searchurl = "http://magiccards.info/query?q=!{}+e%3A{}%2Fen&v=card&s=cname".format(
                             quote_plus(cardname.lower()),
                             quote_plus(cardset.lower()))
                     with urlopen(searchurl) as response:
@@ -150,4 +165,5 @@ if __name__ == '__main__':
                             placeholderid += 1
                             shutil.copy(tmpfile, os.path.join(output_dir, str(placeholderid) + ".jpg"))
                     else:
-                        card_not_found(cardname)
+                        print(cardname + " not found with : " + searchurl)
+                        card_not_found(line)
