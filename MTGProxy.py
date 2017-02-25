@@ -8,16 +8,21 @@ from urllib.parse import quote_plus
 import configparser
 
 ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__)))
+CONF_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'conf'))
+INPUT_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'input'))
+OUTPUT_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'output'))
+SCANS_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'scans'))
+
 INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s+(?:\[(.{2}.?)\])?\s?([\w\,\'\-\s]*?)(?:/+[\w\,\'\-\s]*)?$"
 ONLINE_REGEX = "(http://magiccards\.info/scans/en/\w{2,3}/\d{1,3}\w?\.jpg)"
 
 current_proxy_id = 1
-output_path = os.path.join(ROOT_DIR, "output", "Proxy")
+output_path = os.path.join(OUTPUT_DIR, "Proxy")
 output_dir = output_path
-not_found_file = os.path.join(ROOT_DIR, "input", "not_found.txt")
-proxy_file = os.path.join(ROOT_DIR, "input", "Proxy.txt")
-edition_file = os.path.join(ROOT_DIR, "conf", "Edition.txt")
-scans_dir = os.path.join(ROOT_DIR, "scans")
+not_found_file = os.path.join(INPUT_DIR, "not_found.txt")
+proxy_file = os.path.join(INPUT_DIR, "Proxy.txt")
+edition_file = os.path.join(CONF_DIR, "Edition.txt")
+scans_dir = SCANS_DIR
 online_mode = True
 offline_mode = True
 mode_priority = "online"
@@ -78,6 +83,7 @@ def init():
     else:
         # Create output dir if necessary
         os.makedirs(output_dir)
+    shutil.copy(os.path.join(CONF_DIR, "Proxy.sla"), os.path.join(OUTPUT_DIR))
     open(not_found_file, 'w').close()
 
 
