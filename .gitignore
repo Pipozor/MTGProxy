@@ -1,3 +1,4 @@
+.idea
 scans/*
 /scans/put_scans_here
 conf/global.ini
