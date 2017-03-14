@@ -75,7 +75,7 @@
 20080829	DRB	From the Vault: Dragons
 20081003	ALA	Shards of Alara
 20081107	DD2	Duel Decks: Jace vs. Chandra
-20090206	CON	Conflux
+20090206	_CON	Conflux
 20090410	DDC	Duel Decks: Divine vs. Demonic
 20090430	ARB	Alara Reborn
 20090717	M10	Magic 2010
@@ -151,6 +151,7 @@
 20150821	V15	From the Vault: Angels
 20150828	DDP	Duel Decks: Zendikar vs. Eldrazi
 20151002	BFZ	Battle for Zendikar
+20151002	EXP	Zendikar Expeditions
 20151106	N/A	2015 Holiday Gift Box
 20151113	C15	Commander 2015
 20160122	OGW	Oath of the Gatewatch
@@ -163,6 +164,7 @@
 20160819	V16	From the Vault: Lore
 20160902	DDR	Duel Decks: Nissa vs. Ob Nixilis
 20160930	KLD	Kaladesh
+20160930	MPS	Kaladesh Inventions
 20161111	C16	Commander 2016
 20161125	PCA	Planechase Anthology
 20170120	AER	Aether Revolt
