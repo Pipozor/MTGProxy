@@ -13,8 +13,10 @@ INPUT_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'input'))
 OUTPUT_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'output'))
 SCANS_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'scans'))
 
-INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s+(?:\[(.{2}.?)\])?\s?([\w\,\'\-\s]*?)(?:/+[\w\,\'\-\s]*)?$"
+INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s+(?:\[(.{2}.?)\])?\s?([\w\,\'\-\s\(\)\.]*?)(?:/+[\w\,\'\-\s]*)?$"
 ONLINE_REGEX = "(http://magiccards\.info/scans/en/\w{2,3}/\d{1,3}\w?\.jpg)"
+LAND_VERSION_REGEX = '\s?\(v\.?\s?([0-9]*)\)'
+EDITION_REGEX = '\d{8}\t(.*)\t'
 
 current_proxy_id = 1
 output_path = os.path.join(OUTPUT_DIR, "Proxy")
@@ -26,6 +28,7 @@ scans_dir = SCANS_DIR
 online_mode = True
 offline_mode = True
 mode_priority = "online"
+edition_lines = []
 
 # TODO: support special-encoded character, like 'æ'
 # encoding_map = {u'æ': u'ae'}
@@ -39,15 +42,23 @@ mode_priority = "online"
 
 
 def findcardoffline(name, searchdir=None):
-    regex = name.lower() + '(?! )\.'  # not followed by a space, but followed by a dot
+    regex = name.lower()
+    reg = re.compile(LAND_VERSION_REGEX, re.IGNORECASE)
+    if reg.search(name):
+        # print(reg.findall(name))
+        land_version = reg.findall(name)[0]
+        name = reg.sub('', name)
+        regex = re.escape(name)
+        regex += '\s?\(v\.\s?' + land_version + '\)'
+    elif name in ['plains', 'island', 'swamp', 'mountain', 'forest']:
+        regex += '\s?\(v\.\s?1\)'
+    regex += '(?! )\.'  # not followed by a space, but followed by a dot
     found = ''
     # print("regex : '{}' ".format(regex))
-    with open(edition_file, 'r', encoding='utf8') as filedesc:
-        edition_lines = reversed(filedesc.readlines())
     for edition_line in edition_lines:
         # print(edition_line)
-        if re.match("\d{8}\t(.{3})\t", edition_line):
-            trigram = re.findall("\d{8}\t(.{3})\t", edition_line)[0]
+        if re.match(EDITION_REGEX, edition_line):
+            trigram = re.findall(EDITION_REGEX, edition_line)[0]
             # print(trigram)
             edition_scan_path = os.path.join(scans_dir, trigram)
             # print(edition_scan_path + " test")
@@ -124,6 +135,9 @@ def get_program_param():
         scans_dir = os.path.realpath(os.path.join(ROOT_DIR, scans_dir))
     if offline_mode and (not scans_dir or not os.path.isdir(scans_dir)):
         print("Scans directory muste be defined and valid for offline mode")
+    global edition_lines
+    with open(edition_file, 'r', encoding='utf8') as filedesc:
+        edition_lines = list(reversed(filedesc.readlines()))
 
 
 def copy_card(path, quantity):
@@ -142,7 +156,7 @@ def create_proxy_online(quantity, cardname, cardset=''):
         searchurl = "http://magiccards.info/query?q=!{}&v=card&s=cname".format(
             quote_plus(cardname.lower()))
     else:
-        searchurl = "http://magiccards.info/query?q=!{}+e%3A{}&v=card&s=cname".format(
+        searchurl = "http://magiccards.info/query?q={}+e%3A{}&v=card&s=cname".format(
             quote_plus(cardname.lower()),
             quote_plus(cardset.lower()))
     # print("Search with : {}".format(searchurl))
