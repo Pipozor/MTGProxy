@@ -63,7 +63,8 @@
 20060203	GPT	Guildpact
 20060505	DIS	Dissension
 20060721	CSP	Coldsnap
-20061006	TSP/TSB	Time Spiral
+20061006	TSP	Time Spiral
+20061006	TSB	Time Spiral
 20070202	PLC	Planar Chaos
 20070504	FUT	Future Sight
 20070713	10E	Tenth Edition
