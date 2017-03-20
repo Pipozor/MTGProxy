@@ -1,7 +1,6 @@
 .idea
 scans/*
+!scans/put_scans_here
 conf/global.ini
-output/Proxy
-input/not_found.txt
-/output/Proxy.sla
-/input/Proxy.txt
+output/*
+input/*
