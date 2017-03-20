@@ -1,0 +1,98 @@
+Callow Jushi;Jaraku the Interloper
+Faithful Squire;Kaiso, Memory of Loyalty
+Hired Muscle;Scarmaker
+Cunning Bandit;Azamuki, Treachery Incarnate
+Nezumi Shortfang;Stabwhisker the Odious
+Akki Lavarunner;Tok-Tok, Volcano Born
+Initiate of Blood;Goka the Unjust
+Budoka Gardener;Dokai, Weaver of Life
+Orochi Eggwatcher;Shidako, Broodmistress
+Kitsune Mystic;Autumn-Tail, Kitsune Sage
+Bushi Tenderfoot;Kenzo the Hardhearted
+Jushi Apprentice;Tomoya the Revealer
+Student of Elements;Tobita, Master of Winds
+Nezumi Graverobber;Nighteyes the Desecrator
+Lambholt Elder;Silverpelt Werewolf
+Scorned Villager;Moonscarred Werewolf
+Wolfbitten Captive;Krallenhorde Killer
+Loyal Cathar;Unhallowed Cathar
+Huntmaster of the Fells;Ravager of the Fells
+Chalice of Life;Chalice of Death
+Elbrus, the Binding Blade;Withengar Unbound
+Soul Seizer;Ghastly Haunting
+Chosen of Markov;Markov's Servant
+Ravenous Demon;Archdemon of Greed
+Afflicted Deserter;Werewolf Ransacker
+Hinterland Hermit;Hinterland Scourge
+Mondronen Shaman;Tovolar's Magehunter
+Screeching Bat;Stalking Vampire
+Hanweir Watchkeep;Bane of Hanweir
+Instigator Gang;Wildblood Pack
+Kruin Outlaw;Terror of Kruin Pass
+Reckless Waif;Merciless Predator
+Tormented Pariah;Rampaging Werewolf
+Village Ironsmith;Ironfang
+Daybreak Ranger;Nightfall Predator
+Garruk Relentless;Garruk, the Veil-Cursed
+Gatstaf Shepherd;Gatstaf Howler
+Grizzled Outcasts;Krallenhorde Wantons
+Mayor of Avabruck;Howlpack Alpha
+Ulvenwald Mystics;Ulvenwald Primordials
+Villagers of Estwald;Howlpack of Estwald
+Thraben Sentry;Thraben Militia
+Civilized Scholar;Homicidal Brute
+Delver of Secrets;Insectile Aberration
+Ludevic's Test Subject;Ludevic's Abomination
+Cloistered Youth;Unholy Fiend
+Bloodline Keeper;Lord of Lineage
+Liliana, Heretical Healer;Liliana, Defiant Necromancer
+Chandra, Fire of Kaladesh;Chandra, Roaring Flame
+Nissa, Vastwood Seer;Nissa, Sage Animist
+Kytheon, Hero of Akros;Gideon, Battle-Forged
+Jace, Vryn's Prodigy;Jace, Telepath Unbound
+Budoka Pupil;Ichiga, Who Topples Oaks
+Homura, Human Ascendant;Homura's Essence
+Sasaya, Orochi Ascendant;Sasaya's Essence
+Rune-Tail, Kitsune Ascendant;Rune-Tail's Essence
+Erayo, Soratami Ascendant;Erayo's Essence
+Kuon, Ogre Ascendant;Kuon's Essence
+Elusive Tormentor;Insidious Mist
+Heir of Falkenrath;Heir to the Night
+Kindly Stranger;Demon-Possessed Witch
+Breakneck Rider;Neck Breaker
+Convicted Killer;Branded Howler
+Gatstaf Arsonists;Gatstaf Ravagers
+Geier Reach Bandit;Vildin-Pack Alpha
+Kessig Forgemaster;Flameheart Werewolf
+Skin Invasion;Skin Shedder
+Village Messenger;Moonrise Intruder
+Autumnal Gloom;Ancient of the Equinox
+Duskwatch Recruiter;Krallenhorde Howler
+Hermit of the Natterknolls;Lone Wolf of the Natterknolls
+Hinterland Logger;Timber Shredder
+Lambholt Pacifist;Lambholt Butcher
+Hanweir Militia Captain;Westvale Cult Leader
+Sage of Ancient Lore;Werewolf of Ancient Hunger
+Solitary Hunter;One of the Pack
+Arlinn Kord;Arlinn, Embraced by the Moon
+Harvest Hand;Scrounged Scythe
+Neglected Heirloom;Ashmouth Blade
+Thraben Gargoyle;Stonewing Antagonizer
+Westvale Abbey;Ormendahl, Profane Prince
+Pious Evangel;Wayward Disciple
+Town Gossipmonger;Incited Rabble
+Aberrant Researcher;Perfected Form
+Daring Sleuth;Bearer of Overwhelming Truths
+Archangel Avacyn;Avacyn, the Purifier
+Avacynian Missionaries;Lunarch Inquisitors
+Startled Awake;Persistent Nightmare
+Thing in the Ice;Awoken Horror
+Uninvited Geist;Unimpeded Trespasser
+Accursed Witch;Infectious Curse
+Conduit of Storms;Conduit of Emrakul
+Kessig Prowler;Sinuous Predator
+Shrill Howler;Howling Chorus
+Smoldering Werewolf;Erupting Dreadwolf
+Tangleclaw Werewolf;Fibrous Entangler
+Ulvenwald Captive;Ulvenwald Abomination
+Vildin-Pack Outcast;Dronepack Kindred

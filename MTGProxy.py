@@ -24,19 +24,19 @@ output_dir = output_path
 not_found_file = os.path.join(INPUT_DIR, "not_found.txt")
 proxy_file = os.path.join(INPUT_DIR, "Proxy.txt")
 edition_file = os.path.join(CONF_DIR, "Edition.txt")
+double_faced_file = os.path.join(CONF_DIR, "double-faced_cards.txt")
 scans_dir = SCANS_DIR
 online_mode = True
 offline_mode = True
 mode_priority = "online"
 edition_lines = []
+double_faced = {}
 
 # TODO: support special-encoded character, like 'æ'
 # encoding_map = {u'æ': u'ae'}
 # def normalize(to_norm):
 #     print(to_norm.translate(encoding_map))
 #     return to_norm.translate(encoding_map)
-
-# TODO: support double-faced cards
 
 # TODO: generate PDF files
 
@@ -138,6 +138,11 @@ def get_program_param():
     global edition_lines
     with open(edition_file, 'r', encoding='utf8') as filedesc:
         edition_lines = list(reversed(filedesc.readlines()))
+    global double_faced
+    with open(double_faced_file, 'r', encoding='utf8') as dffd:
+        for line in dffd:
+            (face_up, face_down) = re.findall('(.*);(.*)', line)[0]
+            double_faced[face_up] = face_down
 
 
 def copy_card(path, quantity):
@@ -182,10 +187,15 @@ def create_proxy_offline(quantity, cardname, cardset=''):
     if filepath is not None:
         print("--> {} '{}' created using file {}".format(quantity, cardname, filepath))
         copy_card(filepath, quantity)
-        return 1
+        return_code = 1
     else:
         print("'{}' not found in scans directory ".format(cardname))
-        return 0
+        return_code = 0
+    if cardname in double_faced.keys():
+        if not create_proxy_offline(quantity, double_faced[cardname], cardset):
+            print("'{}' not found in scans directory ".format(cardname))
+            return_code = 0
+    return return_code
 
 
 def process_input_file(input_file):
