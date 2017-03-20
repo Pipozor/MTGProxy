@@ -38,6 +38,8 @@ double_faced = {}
 #     print(to_norm.translate(encoding_map))
 #     return to_norm.translate(encoding_map)
 
+# TODO: support double cards
+
 # TODO: generate PDF files
 
 
