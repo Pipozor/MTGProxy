@@ -96,3 +96,4 @@ Smoldering Werewolf;Erupting Dreadwolf
 Tangleclaw Werewolf;Fibrous Entangler
 Ulvenwald Captive;Ulvenwald Abomination
 Vildin-Pack Outcast;Dronepack Kindred
+Ulrich of the Krallenhorde;Ulrich, Uncontested Alpha
