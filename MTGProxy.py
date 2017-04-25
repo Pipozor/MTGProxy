@@ -16,7 +16,7 @@ SCANS_DIR = os.path.realpath(os.path.join(ROOT_DIR, 'scans'))
 INPUT_REGEX = "^(?:SB\s?\:\s?)?(\d+)\s+(?:\[(.{2}.?)\])?\s?([\w\,\'\-\s\(\)\.]*?)(?:/+[\w\,\'\-\s]*)?$"
 ONLINE_REGEX = "(http://magiccards\.info/scans/en/\w{2,3}/\d{1,3}\w?\.jpg)"
 LAND_VERSION_REGEX = '\s?\(v\.?\s?([0-9]*)\)'
-EDITION_REGEX = '\d{8}\t(.*)\t'
+EDITION_REGEX = '\d{8}\s*(\w*)\s'
 
 current_proxy_id = 1
 output_path = os.path.join(OUTPUT_DIR, "Proxy")
@@ -121,7 +121,7 @@ def get_program_param():
     if not os.path.isabs(proxy_file):
         proxy_file = os.path.realpath(os.path.join(ROOT_DIR, proxy_file))
     if not os.path.isfile(proxy_file):
-        sys.exit(proxy_file + "is not a valid file")
+        sys.exit(proxy_file + " is not a valid file")
     # Output directory
     output_path = config.get('output', 'output_path')
     output_dir = output_path
